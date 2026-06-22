@@ -1,0 +1,351 @@
+.page-listapag {
+    position: relative;
+    color: #F0F2EE;
+    box-sizing: border-box;
+}
+
+/* HEADER RESPONSIVO */
+.header-listapag {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 10;
+}
+
+.back-listapag {
+    position: absolute;
+    left: 0px;
+    top: 30px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100;
+}
+
+.ba-listapag {
+    padding: 10px 30px;
+    border-radius: 999px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    border: none;
+    color: 0A0A0A;
+    background-color: #F0F2EE;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ba-listapag:hover {
+    background-color: #7F170E;
+    color: #F0F2EE;
+}
+
+.titles-listapag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header-listapag h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin: 0 0 5px 0;
+}
+
+.count-listapag {
+    color: #888;
+    font-size: 0.95rem;
+}
+
+.content-listapag {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* CAROUSEL */
+.carousel-listapag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.track-listapag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    height: 45vh;
+    min-height: 300px;
+    position: relative;
+    flex-grow: 1;
+}
+
+/* CARDS E ANIMAÇÕES */
+.card-listapag {
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 12px;
+    overflow: hidden;
+    will-change: transform, opacity;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-listapag img {
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* CAPA SELECIONADA (AINDA MAIS PEQUENA) */
+.center-listapag {
+    transform: scale(1.1);
+    opacity: 1;
+    z-index: 2;
+}
+
+.center-listapag img {
+    width: min(18vw, 210px);
+    height: auto;
+    object-fit: contain;
+}
+
+/* CAPAS LATERAIS (MAIS LARGAS) */
+.left-listapag,
+.right-listapag {
+    transform: scale(0.85);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.left-listapag:hover,
+.right-listapag:hover {
+    opacity: 0.6;
+    transform: scale(0.88);
+}
+
+.left-listapag img,
+.right-listapag img {
+    width: min(18vw, 220px);
+    height: auto;
+    object-fit: contain;
+}
+
+.hidden-listapag {
+    display: none;
+}
+
+/* INFORMAÇÕES DO FILME FIXAS ABAIXO */
+.info-listapag {
+    margin-top: 26px;
+    text-align: center;
+    animation: fadeInListapag 0.4s ease;
+    max-width: 600px;
+    padding: 0 20px;
+}
+
+.info-listapag h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.info-listapag p {
+    font-size: 1.1rem;
+    color: #bbb;
+    margin: 0;
+}
+
+@keyframes fadeInListapag {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ESTADOS DE CARREGAMENTO / VAZIO */
+.loading-listapag,
+.empty-listapag {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 1.2rem;
+}
+
+.filter-wrapper-listapag {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    z-index: 100;
+}
+
+/* O BOTÃO NOVO DENTRO DO TEMA */
+.filter-btn-listapag {
+    background-color: #F0F2EE;
+    border: none;
+    cursor: pointer;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.filter-icon-svg {
+    width: 48px;
+    height: 48px;
+    color: #0A0A0A;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.filter-btn-listapag:hover {
+    background-color: #7F170E;
+}
+
+.filter-btn-listapag:hover .filter-icon-svg {
+    color: #F0F2EE;
+}
+
+.filter-btn-listapag.open-listapag {
+    background-color: #7F170E;
+    box-shadow: 0 0 15px rgba(127, 23, 14, 0.6);
+}
+
+.filter-btn-listapag.open-listapag .filter-icon-svg {
+    color: #F0F2EE;
+    transform: rotate(-90deg);
+}
+
+/* A DISPOSIÇÃO DOS GÉNEROS (RESTAURADA) */
+.dropdown-listapag {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 5px;
+    animation: slideUpListapag 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideUpListapag {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.option-listapag {
+    border: 1px solid #444;
+    color: #ccc;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    backdrop-filter: blur(10px);
+}
+
+.option-listapag:hover {
+    border-color: #F0F2EE;
+    color: #F0F2EE;
+    transform: translateY(-2px);
+}
+
+.option-listapag.active-listapag {
+    background: #F0F2EE;
+    color: #0A0A0A;
+    border-color: #F0F2EE;
+    font-weight: 600;
+}
+
+/* Container para agrupar os botões de ação no canto inferior direito */
+.actions-wrapper-listapag {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    flex-direction: row-reverse;
+    /* Mantém o alinhamento correto dos elementos lado a lado */
+    align-items: flex-end;
+    gap: 16px;
+    z-index: 100;
+}
+
+/* Modificação para o filtro se adaptar ao container flex horizontal */
+.filter-wrapper-listapag {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+}
+
+/* O novo botão de Adicionar Filme baseado no tema existente */
+.add-movie-btn-listapag {
+    background-color: #F0F2EE;
+    border: none;
+    cursor: pointer;
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-icon-text {
+    font-size: 38px;
+    font-weight: 300;
+    color: #0A0A0A;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.add-movie-btn-listapag:hover {
+    background-color: #7F170E;
+    transform: scale(1.05);
+}
+
+.add-movie-btn-listapag:hover .add-icon-text {
+    color: #F0F2EE;
+}

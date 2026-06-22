@@ -1,0 +1,115 @@
+.movies-page {
+    position: relative;
+    min-height: 100vh;
+    color: #F0F2EE;
+    font-family: Arial;
+}
+
+/* fundo estilo cinema */
+.background {
+    position: absolute;
+    inset: 0;
+    filter: brightness(0.3);
+    z-index: -1;
+}
+
+.top-bar {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    padding: 0 30px;
+    z-index: 10;
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.filter-btn img {
+    width: 60px;
+    height: 60px;
+}
+
+.carousel {
+    height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.movie-card {
+    transition: all 0.5s ease;
+}
+
+.movie-card img {
+    border-radius: 12px;
+}
+
+.movie-card {
+
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 10px;
+}
+
+.center {
+    transform: scale(1.05);
+    opacity: 1;
+    z-index: 2;
+}
+
+.center img {
+    width: min(40vw, 550px);
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.left,
+.right {
+    transform: scale(0.8);
+    opacity: 0.35;
+}
+
+.left img,
+.right img {
+    width: min(18vw, 250px);
+    max-height: 40vh;
+    object-fit: contain;
+}
+
+.hidden {
+    display: none;
+}
+
+.movie-info {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.movie-info h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.movie-info p {
+    font-size: 1.5rem;
+}
+

@@ -1,0 +1,441 @@
+:root {
+    --0A0A0A: #0A0A0A;
+    --strip-bg: #181818;
+    --strip-edge: #252525;
+    --hole-bg: #060606;
+    --amber: #EAAF2F;
+    --amber-dim: #EAAF2F;
+    --warm-white: #E8E0D0;
+    --grey: #555;
+    --strip-w: 520px;
+    --sprocket-w: 52px;
+    --frame-w: 416px;
+    --text-panel-w: 320px;
+    --shift-amount: 180px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    background: var(--0A0A0A);
+    color: var(--warm-white);
+    overflow-x: hidden;
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background: linear-gradient(to bottom, rgba(8, 8, 8, 0.95) 30px, transparent);
+    pointer-events: none;
+    /* garante que o header não bloquei clicks */
+}
+
+header * {
+    pointer-events: auto;
+}
+
+.h-divider {
+    flex: 1;
+    height: 1px;
+    background: var(--grey);
+    opacity: 0.25;
+}
+
+.counter {
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.2em;
+    color: var(--grey);
+}
+
+/*indicaodres de progresso*/
+.progress-rail {
+    position: fixed;
+    left: calc(50% - var(--strip-w) / 2 - 40px);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.progress-rail.shift {
+    transform: translate(-160px, -50%);
+}
+
+.pip {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #333;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pip:hover {
+    background: var(--amber-dim);
+    transform: scale(1.2);
+}
+
+.pip.active {
+    height: 20px;
+    border-radius: 4px;
+    background: var(--amber);
+    transform: none;
+}
+
+.page {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    margin-top: -110px;
+}
+
+/* overlay escuro quando a pagina vai para o lado*/
+.page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Sincronizado com a fita */
+    z-index: 150;
+}
+
+.page.expanded::before {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* fita */
+.film-strip {
+    position: relative;
+    width: var(--strip-w);
+    background: var(--strip-bg);
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+/* a fita expande-se e mexe-se 160px*/
+.film-strip.shift {
+    transform: translateX(-160px);
+}
+
+/* linhas laterais */
+.film-strip::before,
+.film-strip::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: var(--sprocket-w);
+    background: var(--strip-edge);
+    z-index: 2;
+}
+
+.film-strip::before {
+    left: 0;
+}
+
+.film-strip::after {
+    right: 0;
+}
+
+/* perfurações - quadrados da fita */
+.sprocket-holes {
+    position: absolute;
+    top: -85vh;
+    bottom: -86vh;
+    width: var(--sprocket-w);
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 3;
+    transform: translateY(var(--scroll-shift, 0px));
+}
+
+/* posição fixa com o centro */
+.sprocket-holes.left {
+    left: calc(50% - var(--strip-w) / 2);
+}
+
+.sprocket-holes.right {
+    left: calc(50% + var(--strip-w) / 2 - var(--sprocket-w));
+}
+
+.hole-unit {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hole-unit .hole {
+    width: 24px;
+    height: 18px;
+    border-radius: 3px;
+    background: var(--hole-bg);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+
+.film-item {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--sprocket-w);
+    scroll-snap-align: center;
+}
+
+
+.frame-wrapper {
+    width: 100%;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+        opacity 0.8s ease,
+        filter 0.8s ease;
+    transform: scale(0.85);
+    opacity: 0.25;
+    filter: grayscale(80%) brightness(0.4);
+}
+
+.film-item.active .frame-wrapper {
+    transform: scale(1);
+    opacity: 1;
+    filter: none;
+}
+
+.frame {
+    position: relative;
+    background: #101010;
+    border: 2px solid #2a2a2a;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/*riscos de estilo filme antigo*/
+.scratch {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(255, 255, 255, 0.05),
+            transparent);
+}
+
+.scratch:nth-child(1) {
+    left: 22%;
+}
+
+.scratch:nth-child(2) {
+    left: 78%;
+    opacity: 0.4;
+}
+
+/* placeholder do video */
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, #222222, #0a0a0a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid rgba(200, 168, 75, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+}
+
+.play-btn:hover {
+    transform: scale(1.08);
+    background: rgba(200, 168, 75, 0.05);
+}
+
+.film-item.active .play-btn {
+    border-color: var(--amber);
+}
+
+/* textos internos*/
+.frame-label {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(200, 168, 75, 0.3);
+}
+
+.frame-number {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.12);
+}
+
+
+.text-panel {
+    position: absolute;
+    left: calc(50% + var(--strip-w) / 2 + 50px);
+    top: 50%;
+    transform: translateY(-45%);
+    width: 340px;
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.film-item.active .text-panel {
+    opacity: 1;
+    transform: translateY(-50%);
+}
+
+.eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.8rem;
+}
+
+.text-panel h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #F0F2EE;
+}
+
+.text-panel p {
+    font-size: 0.9rem;
+    color: #F0F2EE;
+    line-height: 1.6;
+}
+
+.read-more {
+    margin-top: 1.2rem;
+    display: inline-block;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px 0;
+    transition: color 0.3s, opacity 0.3s;
+}
+
+.read-more:hover {
+    color: #F0F2EE;
+    opacity: 0.8;
+}
+
+.detail-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(680px, 45vw);
+    height: 100vh;
+    background: #0A0A0A;
+    border-left: 1px solid #1D1D1B;
+    padding: 6rem 4rem;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1),
+        opacity 0.5s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.detail-panel.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.detail-content {
+    animation: fadeUp 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.detail-panel h2 {
+    font-size: 2.6rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #F0F2EE;
+    line-height: 1.2;
+}
+
+.detail-panel p {
+    color: #F0F2EE;
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* botao close */
+.close-detail {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    color: var(--amber);
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s;
+    line-height: 1;
+}
+
+.close-detail:hover {
+    transform: rotate(90deg);
+    color: #F0F2EE;
+}

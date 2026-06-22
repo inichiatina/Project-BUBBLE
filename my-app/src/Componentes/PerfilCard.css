@@ -1,0 +1,127 @@
+/* bilhete */
+.ticket {
+    width: 900px;
+    height: 500px;
+    top: 0px;
+    margin-top: -60px;
+    background-image: url('/Perfil_imgs/bilhete-final.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.ticket-info {
+    position: absolute;
+    top: 90px;
+    left: 170px;
+    z-index: 2;
+    transform: rotate(-6deg);
+    transform-origin: top left;
+}
+
+/* cinema ticket no bilhete */
+.titulo-perfil {
+    position: relative;
+    margin: 0;
+    top: 24px;
+    right: 86px;
+    color: 0A0A0A;
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 0.9;
+    display: inline-block;
+    transform: rotate(-1.4deg);
+}
+
+/* nome no bilhete */
+.nome {
+    position: absolute;
+    color: 0A0A0A;
+    top: 150px;
+    left: -70px;
+    font-size: 40px;
+    font-weight: bold;
+    transform: rotate(-1.4deg);
+}
+
+/* clack bilhete */
+.avatar {
+    position: absolute;
+    top: 60px;
+    right: 134px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+/* img do clack bilhete */
+.avatar img {
+    width: 900px;
+}
+
+/* quadrado tracejado bilhete */
+.retangulo_avatar {
+    position: absolute;
+    top: 70px;
+    right: 134px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+/* img quadrado tracejado bilhete */
+.retangulo_avatar img {
+    width: 900px;
+}
+
+/* link para as listas no bilhete */
+.link-filmes {
+    color: 0A0A0A;
+}
+
+.link-filmes:hover {
+    color: #7F170E;
+}
+
+/* nr de filmes das listas */
+.estatisticas {
+    position: absolute;
+    left: -36px;
+    top: 260px;
+    color: 0A0A0A;
+    transform: rotate(-1.4deg);
+}
+
+.estatistica {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    -space: nowrap;
+    margin-left: -30px;
+}
+
+.estatistica-titulo {
+    letter-spacing: 0.05em;
+}
+
+.estatistica-tracejado {
+    flex: 1;
+    border-bottom: 2px dashed 0A0A0A;
+    min-width: 80px;
+    margin: 0 6px;
+    margin-bottom: 3px;
+}
+
+.estatistica-valor {
+    font-size: 20px;
+}

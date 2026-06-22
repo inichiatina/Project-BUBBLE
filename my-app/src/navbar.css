@@ -1,0 +1,72 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 70px;
+  top: 0;
+  position: relative;
+  font-family: 'DIN Condensed';
+  font-weight: 400;
+  margin-top: 40px;
+  margin-left: 40px;
+  z-index: 100;
+}
+
+
+.icon {
+  width: 160px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+
+  background-color: #F0F2EE;
+  color: #0A0A0A;
+  padding: 0.5rem 0;
+  border-radius: 8px;
+  min-width: 200px;
+}
+/* Mostrar menu ao fazer hover no container */
+.navbarmeio:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+/* Links do menu */
+.nav-link,
+.nav-link-ativo {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #0A0A0A;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
+  -space: nowrap;
+}
+.nav-link:hover {
+  background-color: #0A0A0A;
+  color: #F0F2EE;
+  padding-left: 1.5rem;
+}
+.nav-link-ativo {
+  background-color: #0A0A0A;
+  border-left: 3px solid #7F170E;
+  color: #F0F2EE;
+  font-weight: 600;
+}

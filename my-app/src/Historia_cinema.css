@@ -1,0 +1,207 @@
+.historia-hist {
+    height: auto;
+    min-height: 100vh;
+}
+
+/* container principal da timeline */
+.timeline-hist {
+    position: relative;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/*linha de progressão*/
+.progress-line-hist {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    pointer-events: none;
+    max-width: 1600px;
+}
+
+.progress-fill-hist {
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(to bottom, #7F170E, #ff3b2f) !important;
+    box-shadow: 0 0 10px rgba(255, 59, 47, 0.5);
+    /* Brilho suave na linha ativa usando as cores existentes */
+    transition: height 0.2s ease-out;
+}
+
+/* eras containers dos quadrados */
+.era-hist {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 6rem;
+    box-sizing: border-box;
+    transition: opacity 0.4s ease;
+}
+
+/* Quando a era não está ativa, fica ligeiramente opaca para destacar a atual */
+.era-hist:not(.is-active-hist) {
+    opacity: 0.5;
+}
+
+/* bolinha de marcação*/
+.era-hist::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    background: #0A0A0A;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+/* Ponto quando a era está ativa */
+.era-hist.is-active-hist::after {
+    background: #F0F2EE;
+}
+
+/* alinhamento dos quadrados direita e esquerda */
+.era-hist.left-hist {
+    flex-direction: row;
+}
+
+.era-hist.left-hist .era-side-info-hist {
+    text-align: left;
+    padding-left: 4rem;
+}
+
+.era-hist.right-hist {
+    flex-direction: row-reverse;
+}
+
+.era-hist.right-hist .era-side-info-hist {
+    text-align: right;
+    padding-right: 4rem;
+}
+
+/* cards individuais de informação */
+.era-card-hist {
+    width: 42%;
+    max-width: 700px;
+    z-index: 2;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: scale(1) translateY(0);
+    backface-visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Card ativo com leve destaque na borda usando as cores existentes */
+.era-hist.is-active-hist .era-card-hist {
+    transform: scale(1.05) translateZ(0);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.era-side-info-hist {
+    width: 42%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    transform: translateY(0);
+}
+
+.era-text-hist {
+    color: #F0F2EE;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+    transform: translateZ(0);
+}
+
+.video-wrapper-hist {
+    margin-top: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.era-side-year-hist {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #7F170E;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.era-hist.is-active-hist .era-side-year-hist {
+    color: #7F170E;
+}
+
+.era-side-title-hist {
+    font-size: 2rem;
+    color: #F0F2EE;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.video-wrapper-hist iframe,
+.video-thumb-hist {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    display: block;
+}
+
+
+.scroll-top-hist {
+    position: fixed;
+    bottom: 2rem;
+    right: 48.4%;
+    width: 50px;
+    height: 50px;
+    background-color: #F0F2EE;
+    color: 0A0A0A;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease, background-color 0.2s ease;
+}
+
+
+.scroll-top-hist.visible-hist {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.scroll-top-hist:hover {
+    background-color: #7F170E;
+}
+
+.scroll-top-hist svg {
+    transition: transform 0.2s ease;
+}
+
+.scroll-top-hist:hover svg {
+    transform: translateY(-2px);
+    color: #F0F2EE;
+}
