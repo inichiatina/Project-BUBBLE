@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getMovieDetails, getPosterUrl } from "../services/movieService.js";
 import { removeMovieFromList } from "../services/userService";
-import "./MoviePopup.css";
+import "./MoviePopUp.css";
 
 const LISTA_LABELS = {
     filmesVistos: "Já Vi",
