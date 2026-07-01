@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
@@ -16,7 +16,7 @@ export default function Entrada() {
     const hintRef = useRef(null);
     const introRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const tl = gsap.timeline(); //cria uma timeline para que as animações aocnteçam em sequencia
 
         tl.fromTo(                  //com o métodos do gsap fromTo o logo cresce suavemente 
