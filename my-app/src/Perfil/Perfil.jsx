@@ -1,11 +1,11 @@
 import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../Context/AuthContext";
 import { getUserProfile } from "../services/userService";
 import { logoutUser } from "../services/authService";
 import claqueteperfil from "/Perfil_imgs/claquete_perfil2.png";
 import retanguloperfil from "/Perfil_imgs/retangulo.png";
-import PerfilCard from "../componentes/PerfilCard";
+import PerfilCard from "../Componentes/PerfilCard";
 import "./Perfil.css";
 
 export default function Perfil() {
