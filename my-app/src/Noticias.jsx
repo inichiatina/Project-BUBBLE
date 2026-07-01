@@ -34,7 +34,7 @@ export default function NewsPage() {
                 "observador.pt", "cinevisao.pt", "c7nema.net", "mag.sapo.pt"
             ].join(",");
 
-            const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(
+            const url = `/api/noticias?q=${encodeURIComponent(
                 query
             )}&domains=${ptDomains}&language=pt&sortBy=publishedAt&pageSize=100&apiKey=${API_KEY}`;
 
