@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../Context/AuthContext";
 import { registerUser } from "../services/authService";
 import bilhete from "/Perfil_imgs/bilhete_login.png";
 import "./Registo.css";
