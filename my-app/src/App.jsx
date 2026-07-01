@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { AuthProvider, useAuth } from "./context/AuthContext";
+import { AuthProvider, useAuth } from "./Context/AuthContext";
 import './App.css';
 import Navbar from './navbar';
 import MenuG from './Homepage';
