@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../Context/AuthContext";
 import { getUserProfile } from "../services/userService";
 import { getGenres, getPosterUrl } from "../services/movieService";
 import FilmeDetalhePopup from "../Componentes/MoviePopUp.jsx";
