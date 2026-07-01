@@ -9,7 +9,7 @@ import Prop from './Prop';
 import Pop from './Pop';
 import Login from './Login.jsx';
 import Noticias from './Noticias';
-import Entrada from './Entrada';
+import Entrada from './entrada';
 import Perfil from './Perfil/Perfil.jsx'
 
 
