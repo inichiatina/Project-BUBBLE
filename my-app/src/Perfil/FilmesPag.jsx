@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MovieCard from "../componentes/MovieCard";
+import MovieCard from "../Componentes/MovieCard";
 import filtroBtn from "/imgs/bolha_logo.png";
 import "./FilmesPag.css";
 
