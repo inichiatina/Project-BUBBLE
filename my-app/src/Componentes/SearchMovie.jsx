@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../Context/AuthContext";
 import { getRandomMovies, searchMovies, getGenres, getMoviesByGenre, getPosterUrl } from "../services/movieService";
 import { addMovieToList, removeMovieFromList, getFilmeListas } from "../services/userService";
 import "./SearchMovie.css";
