@@ -7,7 +7,7 @@ export default function NewsPage() {
     const [currentPage, setCurrentPage] = useState(1);
     const [hoveredCard, setHoveredCard] = useState(null);
 
-    const API_KEY = "4cd97caeb3b144f08a10d9147aa012c7";
+    const API_KEY = '4cd97caeb3b144f08a10d9147aa012c7';
     const articlesPerPage = 12;
 
     //faz um único pedido à pi e depois monta a página consoante o que for devolvido
